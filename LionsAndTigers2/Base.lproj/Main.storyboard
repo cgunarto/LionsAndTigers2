@@ -43,7 +43,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="HNE-oG-ibJ" secondAttribute="trailing" constant="-16" id="xxc-Fh-p0S"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="kUr-cq-tVx" appends="YES" id="w7e-l4-Doj"/>
+                            <outletCollection property="gestureRecognizers" destination="Krh-uK-Aas" appends="YES" id="6pb-Om-LFA"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5EZ-yI-6b2"/>
@@ -53,11 +53,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="kUr-cq-tVx">
+                <swipeGestureRecognizer direction="right" id="Krh-uK-Aas">
                     <connections>
-                        <action selector="panHandler:" destination="vXZ-lx-hvc" id="ZTW-u6-OR5"/>
+                        <action selector="swipeHandler:" destination="vXZ-lx-hvc" id="hZZ-Gv-ppD"/>
                     </connections>
-                </panGestureRecognizer>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="766" y="385"/>
         </scene>
@@ -166,28 +166,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKd-Cf-rfL">
-                                <rect key="frame" x="28" y="111" width="45" height="30"/>
-                                <state key="normal" title="LIONS">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nig-bA-8tt">
+                                <rect key="frame" x="0.0" y="0.0" width="203" height="504"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="ci4-Kc-oYw"/>
+                                </constraints>
+                                <color key="sectionIndexBackgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableviewcell" id="YQD-4D-yjq">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YQD-4D-yjq" id="eqF-gi-NYi">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="onLionsButtonPressed:" destination="grp-GK-VTl" eventType="touchUpInside" id="RyO-KI-gPA"/>
+                                    <outlet property="dataSource" destination="grp-GK-VTl" id="4Rq-Wf-XgN"/>
+                                    <outlet property="delegate" destination="grp-GK-VTl" id="wZc-OC-RKw"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hI6-MI-rG7">
-                                <rect key="frame" x="28" y="229" width="54" height="30"/>
-                                <state key="normal" title="TIGERS">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTigersButtonPressed:" destination="grp-GK-VTl" eventType="touchUpInside" id="122-7u-mg9"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Dw-3H-SbK" firstAttribute="top" secondItem="nig-bA-8tt" secondAttribute="bottom" id="52u-RI-sI6"/>
+                            <constraint firstItem="nig-bA-8tt" firstAttribute="top" secondItem="3VK-JR-iGY" secondAttribute="bottom" id="6Ox-hL-VCy"/>
+                            <constraint firstItem="nig-bA-8tt" firstAttribute="leading" secondItem="T4F-bM-UTO" secondAttribute="leadingMargin" constant="-16" id="RgC-Gu-hus"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="menuTableView" destination="nig-bA-8tt" id="z1n-v3-vrR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbf-yT-tmm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,7 +208,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ua0-LG-TE0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KKQ-Yd-Q7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X0B-HZ-XMt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qH7-vV-Sxe">
@@ -208,6 +219,7 @@
                         <segue destination="keB-Ty-AcP" kind="relationship" relationship="rootViewController" id="MhV-A1-D8Z"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKQ-Yd-Q7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1203" y="65"/>
         </scene>

@@ -127,7 +127,13 @@
             [self.pushBehavior setPushDirection:CGVectorMake(0, [gesture velocityInView:gesture.view].x)];
         }
     }
+}
+
+- (IBAction)swipeHandler:(UISwipeGestureRecognizer *)sender
+{
 
 }
+
+
 
 @end

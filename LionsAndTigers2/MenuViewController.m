@@ -8,7 +8,9 @@
 
 #import "MenuViewController.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <UITableViewDelegate,  UITableViewDataSource>
+@property NSMutableArray *menuItemsArray;
+@property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 
 @end
 
@@ -16,16 +18,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.menuItemsArray = [@[@"LIONS", @"TIGERS"]mutableCopy];
+    self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-- (IBAction)onLionsButtonPressed:(UIButton *)sender
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate lionsButtonPressed];
+    UITableViewCell *cell = [self.menuTableView dequeueReusableCellWithIdentifier:@"tableviewcell"];
+
+    cell.textLabel.text = self.menuItemsArray [indexPath.row];
+    cell.textLabel.textColor = [UIColor lightGrayColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:20.0];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    return cell;
 }
 
-- (IBAction)onTigersButtonPressed:(UIButton *)sender
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self.delegate tigersButtonPressed];
+    return self.menuItemsArray.count;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        [self.delegate lionsButtonPressed];
+    }
+
+    if (indexPath.row == 1)
+    {
+        [self.delegate tigersButtonPressed];
+    }
+}
+
+
+
+
 
 @end
