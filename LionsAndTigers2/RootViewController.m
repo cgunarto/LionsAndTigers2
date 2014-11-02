@@ -129,10 +129,6 @@
     }
 }
 
-- (IBAction)swipeHandler:(UISwipeGestureRecognizer *)sender
-{
-
-}
 
 
 

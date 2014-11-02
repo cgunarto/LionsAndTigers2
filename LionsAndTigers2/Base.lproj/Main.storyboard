@@ -43,7 +43,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="HNE-oG-ibJ" secondAttribute="trailing" constant="-16" id="xxc-Fh-p0S"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="Krh-uK-Aas" appends="YES" id="6pb-Om-LFA"/>
+                            <outletCollection property="gestureRecognizers" destination="JS3-zC-rB0" appends="YES" id="0E5-ca-uZC"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5EZ-yI-6b2"/>
@@ -53,11 +53,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Krh-uK-Aas">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="JS3-zC-rB0">
                     <connections>
-                        <action selector="swipeHandler:" destination="vXZ-lx-hvc" id="hZZ-Gv-ppD"/>
+                        <action selector="panHandler:" destination="vXZ-lx-hvc" id="bbl-hE-jXJ"/>
                     </connections>
-                </swipeGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="766" y="385"/>
         </scene>
