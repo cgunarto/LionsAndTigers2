@@ -46,6 +46,7 @@
     CustomCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.cellImageView.image = self.currentPhotosArray [indexPath.item];
 
+//    ANIMATION, COPIED, DOESN'T WORK WELL WITH THE INFINITE TOP SCROLLING
 //    CGRect finalCellFrame = cell.frame;
 //    //check the scrolling direction to verify from which side of the screen the cell should come.
 //    CGPoint translation = [collectionView.panGestureRecognizer translationInView:collectionView.superview];
