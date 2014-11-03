@@ -42,9 +42,24 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomCollectionViewCell *customCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    customCell.cellImageView.image = self.currentPhotosArray [indexPath.item];
-    return customCell;
+    CustomCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.cellImageView.image = self.currentPhotosArray [indexPath.item];
+
+    CGRect finalCellFrame = cell.frame;
+    //check the scrolling direction to verify from which side of the screen the cell should come.
+    CGPoint translation = [collectionView.panGestureRecognizer translationInView:collectionView.superview];
+    if (translation.x > 0) {
+        cell.frame = CGRectMake(finalCellFrame.origin.x - 1000, - 500.0f, 0, 0);
+    } else {
+        cell.frame = CGRectMake(finalCellFrame.origin.x + 1000, - 500.0f, 0, 0);
+    }
+
+    [UIView animateWithDuration:0.5f animations:^(void){
+        cell.frame = finalCellFrame;
+    }];
+
+
+    return cell;
 }
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
