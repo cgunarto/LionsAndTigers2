@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
     self.menuItemsArray = [@[@"LIONS", @"TIGERS"]mutableCopy];
+    self.view.backgroundColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
     self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 

@@ -76,6 +76,7 @@
 - (void)tigersButtonPressed
 {
     self.photoVC.currentPhotosArray = self.tigerPhotosArray;
+    [self.photoVC setupDataForCollectiveView];
     [self.photoVC refreshView];
 
     [UIView animateWithDuration:0.2 animations:^{
@@ -89,6 +90,7 @@
 - (void)lionsButtonPressed
 {
     self.photoVC.currentPhotosArray = self.lionPhotosArray;
+    [self.photoVC setupDataForCollectiveView];
     [self.photoVC refreshView];
 
     [UIView animateWithDuration:0.2 animations:^{

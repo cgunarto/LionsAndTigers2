@@ -19,5 +19,6 @@
 @property NSMutableArray *currentPhotosArray;
 
 - (void) refreshView;
+- (void)setupDataForCollectiveView;
 
 @end
