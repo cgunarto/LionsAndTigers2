@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#define kCellFontSize 20.0
 
 @interface MenuViewController () <UITableViewDelegate,  UITableViewDataSource>
 @property NSMutableArray *menuItemsArray;
@@ -34,7 +35,7 @@
 
     cell.textLabel.text = self.menuItemsArray [indexPath.row];
     cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:20.0];
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:kCellFontSize];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     return cell;
 }

@@ -10,6 +10,12 @@
 #import "PhotosViewController.h"
 #import "MenuViewController.h"
 
+#define kLeftConstant -16
+#define kRightConstant -16
+#define kConstantMove 200
+#define kAnimationDuration 0.2
+
+
 @interface RootViewController () <TopDelegate, HUDDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *photosLeftConstraint;
@@ -66,9 +72,9 @@
 
 - (void)onMenuButtonTapped
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.photosLeftConstraint.constant = self.photosLeftConstraint.constant + 200;
-        self.photosRightConstraint.constant = self.photosRightConstraint.constant - 200;
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        self.photosLeftConstraint.constant = self.photosLeftConstraint.constant + kConstantMove;
+        self.photosRightConstraint.constant = self.photosRightConstraint.constant - kConstantMove;
         [self.view layoutIfNeeded];
     }];
 }
@@ -79,10 +85,8 @@
     [self.photoVC setupDataForCollectiveView];
     [self.photoVC refreshView];
 
-    [UIView animateWithDuration:0.2 animations:^{
-        self.photosLeftConstraint.constant = -16;
-        self.photosRightConstraint.constant = -16;
-        [self.view layoutIfNeeded];
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        [self returnOriginalLayout];
     }];
 
 }
@@ -93,10 +97,8 @@
     [self.photoVC setupDataForCollectiveView];
     [self.photoVC refreshView];
 
-    [UIView animateWithDuration:0.2 animations:^{
-        self.photosLeftConstraint.constant = -16;
-        self.photosRightConstraint.constant = -16;
-        [self.view layoutIfNeeded];
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        [self returnOriginalLayout];
     }];
 }
 
@@ -137,7 +139,14 @@
     }
 }
 
+#pragma mark Custom Methods
 
+- (void) returnOriginalLayout
+{
+    self.photosLeftConstraint.constant = kLeftConstant;
+    self.photosRightConstraint.constant = kRightConstant;
+    [self.view layoutIfNeeded];
+}
 
 
 @end

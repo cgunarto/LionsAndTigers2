@@ -84,18 +84,24 @@
 }
 
 
-
+//COPIED THIS CODE FROM http://adoptioncurve.net/archives/2013/07/building-a-circular-gallery-with-a-uicollectionview/
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
+    // Calculate where the collection view should be at the bottom end of the item
     float contentOffsetWhenFullyScrolledToBottom = self.collectionView.frame.size.height * ([self.currentPhotosArray count] -1);
 
     if (scrollView.contentOffset.x == contentOffsetWhenFullyScrolledToBottom)
+        // user is scrolling to the bottom from the last item to the 'fake' item 1.
+        // reposition offset to show the 'real' item 1 at the left-hand end of the collection view
+
     {
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
 
         [self.collectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
     }
 
+    // user is scrolling to the Top from the first item to the fake 'item N'.
+    // reposition offset to show the 'real' item N at the botom end end of the collection view
     else if (scrollView.contentOffset.y == 0)
     {
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:([self.currentPhotosArray count] -2) inSection:0];
@@ -104,6 +110,7 @@
 
 }
 
+//COPIED THIS CODE FROM http://adoptioncurve.net/archives/2013/07/building-a-circular-gallery-with-a-uicollectionview/
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     float contentOffsetWhenFullyScrolledToBottom = self.collectionView.frame.size.height * ([self.currentPhotosArray count] -1);
