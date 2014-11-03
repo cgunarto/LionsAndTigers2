@@ -16,16 +16,29 @@
 
 @implementation PhotosViewController
 
+#pragma mark VC Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
 
 
+#pragma mark Custom Delegation Method 
+
 - (IBAction)onMenuButtonPressed:(UIBarButtonItem *)sender
 {
     [self.delegate onMenuButtonTapped];
 }
+
+#pragma mark Custom Method
+
+- (void) refreshView
+{
+    [self.collectionView reloadData];
+}
+
+#pragma mark Collection View Cell Data
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -37,11 +50,6 @@
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.currentPhotosArray.count;
-}
-
-- (void) refreshView
-{
-    [self.collectionView reloadData];
 }
 
 

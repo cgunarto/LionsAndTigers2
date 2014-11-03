@@ -31,6 +31,9 @@
 
 @end
 
+
+#pragma mark VC Life Cycle
+
 @implementation RootViewController
 
 - (void)viewDidLoad
@@ -58,6 +61,8 @@
     [super viewDidAppear:animated];
 }
 
+
+#pragma mark Custom Delegation Method
 
 - (void)onMenuButtonTapped
 {
@@ -93,6 +98,7 @@
     }];
 }
 
+#pragma mark Gesture Handler
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {

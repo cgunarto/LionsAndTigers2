@@ -16,11 +16,16 @@
 
 @implementation MenuViewController
 
-- (void)viewDidLoad {
+#pragma mark VC Life Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.menuItemsArray = [@[@"LIONS", @"TIGERS"]mutableCopy];
     self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
+
+#pragma mark Table View Data
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
